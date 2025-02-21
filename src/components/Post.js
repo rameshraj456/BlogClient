@@ -1,28 +1,21 @@
 import React from 'react'
 
-function Post(post) {
+function Post({post}) {
   return (
     <div>
       <div>
-        <p>{post.postedOn}</p>
-        <h4>{post.title}</h4>
-        {
-            post.body.map((b) =>{
-                return <div>
-                        <p>{b.value}</p>
-                    </div>
-
-            })
-        }
-
-
-        {
-            post.tags.map((tag) =>{
-                return <div>
-                    <button>{tag}</button>
-                    </div>
-            })
-        }
+        <h2 >{post.title}</h2>
+        <p >Posted on: {post.postedOn}</p>
+        <div className="mt-2">
+          {post.body.map((content, index) =>
+            content.type === "text" ? (
+              <p key={index}>{content.value}</p>
+            ) : (
+              <img key={index} src={content.value} alt="blog" className="w-full h-40 object-cover" />
+            )
+          )}
+        </div>
+        <p >Tags: {post.tags.join(", ")}</p>
       </div>
     </div>
   )

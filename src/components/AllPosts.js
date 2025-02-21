@@ -21,9 +21,9 @@ function AllPosts() {
     <div>
       
       <div style={{display:"flex" , justifyContent:"space-around" , alignItems:"center" , flexWrap:"wrap" }}>
-        {/* {
+        {
             posts.map( ( post, idx) => <Post post= {post} idx={idx}/>)  
-        } */}
+        }
       </div>    
     </div>
   )

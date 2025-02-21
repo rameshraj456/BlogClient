@@ -49,21 +49,13 @@ function Login() {
 
                 <label>------or------</label>
                 <br />
-                <label>Email :</label>
-                <input type='email' placeholder='email' onChange={(e) => setEmail(e.target.value)} />
-                <br />
-
-                <label>------or------</label>
-                <br />
-                <label>Google Auth</label>
-                <br />
+          
 
                 <button onClick={login}>
                     Submit
                 </button>
 
-                <br/>
-                <a href=''>login as Admin</a>
+                <a href=''>login as user</a>
             </form>
         </div>
     );
