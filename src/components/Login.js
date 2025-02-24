@@ -19,17 +19,7 @@ function Login() {
 
         <button onClick>
             submit
-        </button>
-
-
-        <Button 
-              type="submit" 
-             
-            >
-              {loading ? 'Logging in...' : 'Login with Email'}
-        </Button>
-
-
+        </button> 
 
       </form>
     </div>
