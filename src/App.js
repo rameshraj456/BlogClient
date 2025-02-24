@@ -1,32 +1,42 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import AllPosts from './components/AllPosts';
 import Login from './components/Login';
-import CreatePost from './components/CreatePost'; // Assuming this is for post creation
-import Home from './components/Home'; // Ensure this component exists
+import Header from './components/Header';
+import Main from './Main';
+import Admin from './components/Admin';
+import Profile from './components/Profile';
+
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path:'',
+      element:<Main/>,
+      children:[
+        {
+          path:'',
+          element:<AllPosts/>
+        },
+        {
+          path:'login',
+          element:<Login/>
+        },
+        {
+          path:'profile',
+          element:<Profile/>
+        }
+      ]
+    },
+    {
+      path:'admin',
+      element:<Admin/>
+    }
+  ])
   return (
-    <Router>
-      <div className="App">
-        {/* Navigation Bar */}
-        <nav className="navbar">
-          <ul className="nav-list">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/create-post">+</Link></li>
-            <li><Link to="/login">Login</Link></li>
-          </ul>
-        </nav>
-
-        {/* Routes Configuration */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      <RouterProvider  router={router} />
+    </div>
   );
 }
 

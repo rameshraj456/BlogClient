@@ -5,11 +5,13 @@ function AllPosts() {
     const [posts,setPosts] = useState([])
 
     async function  getData(){
-        const url = process.env.REACT_APP_SERVER_URL
+        const url = process.env.REACT_APP_SERVER_URL;
+        // console.log(url);
         let data = await fetch(`${url}/posts/all-posts`)
+        // console.log(data);
         data = await data.json()
-        setPosts = data
         console.log(data)
+        setPosts(data.data)
     }
 
 
@@ -22,7 +24,10 @@ function AllPosts() {
       
       <div style={{display:"flex" , justifyContent:"space-around" , alignItems:"center" , flexWrap:"wrap" }}>
         {
-            posts.map( ( post, idx) => <Post post= {post} idx={idx}/>)  
+            posts.length == 0 ?
+            <h1>No posts yet !</h1>
+            :
+            posts?.map( ( post, idx) => <Post post= {post} idx={idx}/>)  
         }
       </div>    
     </div>
